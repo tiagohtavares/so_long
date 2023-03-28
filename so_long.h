@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:27:18 by ttavares          #+#    #+#             */
-/*   Updated: 2023/03/28 16:42:41 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:11:18 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 	{
 	void	*mlx;
 	void	*image;
+	void	*image2;
 	void	*mlx_window;
 	int		offsetx;
 	int		offsety;

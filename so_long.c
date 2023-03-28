@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:27:02 by ttavares          #+#    #+#             */
-/*   Updated: 2023/03/28 17:04:28 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:14:13 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	draw_line(s_data *mlx, int x, int y, int colour)
 	}
 	return ;
 }
+
 
 int	moveup(int	key, s_data *p)
 {
@@ -92,6 +93,7 @@ int	main(int argc, char **argv)
 	(void)argv;
 	mlx.mlx = mlx_init();
 	mlx.image = mlx_xpm_file_to_image(mlx.mlx, "./test.xpm", &x,&y);
+	mlx.image2 = mlx_xpm_file_to_image(mlx.mlx, "./floor.xpm", &x,&y);
 	mlx.mlx_window = mlx_new_window(mlx.mlx, mlx.window_x, mlx.window_y, "Game");
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_window, mlx.image, 0, 0);
 	mlx_key_hook(mlx.mlx_window, &moveup, &mlx);
