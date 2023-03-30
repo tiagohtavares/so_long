@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:27:18 by ttavares          #+#    #+#             */
-/*   Updated: 2023/03/28 17:11:18 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:19:13 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 	int		offsety;
 	int		window_x;
 	int		window_y;
+	int		starterx;
+	int		startery;
+	char	**map;
 	}	s_data;
 
 # include "libft/libft.h"

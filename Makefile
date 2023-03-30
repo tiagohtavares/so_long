@@ -6,7 +6,7 @@
 #    By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 11:13:01 by ttavares          #+#    #+#              #
-#    Updated: 2023/03/28 12:37:21 by ttavares         ###   ########.fr        #
+#    Updated: 2023/03/29 13:22:54 by ttavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(MINILIBX):
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(LIBFT) $(MINILIBX)
-	$(CC) $(SRCSOLONG) $(MINILIBX) -lXext -lX11 $(LIBFT) -o $(NAME)
+	$(CC) -g $(SRCSOLONG) $(MINILIBX) -lXext -lX11 $(LIBFT) -o $(NAME)
 
 bonus:
 
