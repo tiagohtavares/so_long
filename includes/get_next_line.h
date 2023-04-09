@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 11:27:18 by ttavares          #+#    #+#             */
-/*   Updated: 2023/03/29 13:19:13 by ttavares         ###   ########.fr       */
+/*   Created: 2022/11/23 16:09:27 by ttavares          #+#    #+#             */
+/*   Updated: 2023/04/01 20:28:49 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-	typedef struct t_data
-	{
-	void	*mlx;
-	void	*image;
-	void	*image2;
-	void	*mlx_window;
-	int		offsetx;
-	int		offsety;
-	int		window_x;
-	int		window_y;
-	int		starterx;
-	int		startery;
-	char	**map;
-	}	s_data;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
-# include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+size_t	ft_strlen_gnl(const char *s);
+int		find_linebreaker(char *str);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+char	*get_next_line(int fd);
+size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t size);
 
 #endif

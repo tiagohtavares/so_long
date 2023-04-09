@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/03 11:13:01 by ttavares          #+#    #+#              #
-#    Updated: 2023/03/29 13:22:54 by ttavares         ###   ########.fr        #
+#    Created: 2023/04/01 19:49:40 by ttavares          #+#    #+#              #
+#    Updated: 2023/04/02 22:02:40 by ttavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ MINILIBX_DIR = ./minilibx-linux
 CC	= cc -Wall -Wextra -Werror
 RM	= rm -f
 
-SRCSOLONG =	so_long.c
+SRCSOLONG =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
+			./srcs/main.c ./srcs/readmap.c ./srcs/errors.c ./srcs/check_map.c\
+			./srcs/readmap_utils.c ./srcs/moves.c ./srcs/drawmap.c
 
 NAME = so_long
 
@@ -38,11 +40,10 @@ bonus:
 
 clean:
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(MINILIBX_DIR)
 
 fclean:	clean
 	$(RM) $(NAME)
 	make fclean -C $(LIBFT_DIR)
 
 re:	fclean $(NAME)
-
-.PHONY:	all clean fclean re bonus
