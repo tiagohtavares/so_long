@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/09 09:29:00 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:12:38 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ typedef struct s_data
 	void	*img_exit;
 	void	*mlx_window;
 	char	**map;
+	char	**duped_map;
 	int		*imagex;
 	int		*imagey;
 	int		windowx;
 	int		windowy;
 	int		moves;
+	int		duped_positionx;
+	int		duped_positiony;
 	int		positionx;
 	int		positiony;
 	int		collected;
@@ -40,6 +43,8 @@ typedef struct s_data
 	int		totalcollectables;
 }	t_data;
 
+void	flood_fill(t_data *gameinfo);
+void	check_path(t_data *gameinfo);
 int		exit_clean(t_data *gameinfo);
 void	drawmap(t_data *gameinfo);
 void	printmap(t_data *gameinfo);

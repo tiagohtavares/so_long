@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:36:44 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/09 09:03:14 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:45:47 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,11 @@ void	check_map(t_data *gameinfo)
 {
 	if (gameinfo->emptyline == 1)
 		error(2, gameinfo);
-	windowsize(gameinfo);
 	check_empty(gameinfo);
 	check_rectangle(gameinfo);
 	check_surrounded_walls(gameinfo);
 	check_player_count(gameinfo);
 	check_exit_count(gameinfo);
 	check_coins_count(gameinfo);
+	check_path(gameinfo);
 }

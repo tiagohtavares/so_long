@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:55:28 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/09 09:43:41 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:40:33 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 		read_map(argv[1], &gameinfo);
 		if (gameinfo.map[0] == NULL)
 			error(0, &gameinfo);
+		windowsize(&gameinfo);
 		check_map(&gameinfo);
 		ft_printf("Moves: %d\n", gameinfo.moves);
 		start_mlx(&gameinfo);

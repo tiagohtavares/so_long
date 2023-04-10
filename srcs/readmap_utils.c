@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:55:29 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/09 07:42:46 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 00:03:56 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ void	printmap(t_data *gameinfo)
 	while (gameinfo->map[i])
 	{
 		ft_printf("%s \n", gameinfo->map[i]);
+		i++;
+	}
+	i = 0;
+	ft_printf("\n");
+	while (gameinfo->duped_map[i])
+	{
+		ft_printf("%s \n", gameinfo->duped_map[i]);
 		i++;
 	}
 }
