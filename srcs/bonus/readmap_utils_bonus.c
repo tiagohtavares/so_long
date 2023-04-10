@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   readmap_utils_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/02 16:55:29 by ttavares          #+#    #+#             */
+/*   Updated: 2023/04/10 21:24:48 by ttavares         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/so_long_bonus.h"
+
+void	windowsize(t_data *gameinfo)
+{
+	int	i;
+
+	i = 0;
+	gameinfo->windowx = 0;
+	gameinfo->windowy = 0;
+	while (gameinfo->map[0][i])
+	{
+		gameinfo->windowx++;
+		i++;
+	}
+	i = 0;
+	while (gameinfo->map[i])
+	{
+		gameinfo->windowy++;
+		i++;
+	}
+}
+
+void	printmap(t_data *gameinfo)
+{
+	int		i;
+
+	i = 0;
+	while (gameinfo->map[i])
+	{
+		ft_printf("%s \n", gameinfo->map[i]);
+		i++;
+	}
+	i = 0;
+	ft_printf("\n");
+	while (gameinfo->duped_map[i])
+	{
+		ft_printf("%s \n", gameinfo->duped_map[i]);
+		i++;
+	}
+}
+
+void	clearmap(t_data *gameinfo)
+{
+	int	i;
+
+	i = 0;
+	while (gameinfo->map[i])
+	{
+		free(gameinfo->map[i]);
+		i++;
+	}
+	free(gameinfo->map);
+}
