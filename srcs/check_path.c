@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 23:45:24 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 01:49:27 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:14:05 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	dupe_map(t_data *gameinfo)
 	int		i;
 
 	i = 0;
-	temp = (char**)calloc(gameinfo->windowy + 1, sizeof(char*));
+	temp = (char **)ft_calloc(gameinfo->windowy + 1, sizeof(char *));
 	if (!temp)
 		return ;
 	while (i < gameinfo->windowy)
@@ -61,8 +61,6 @@ void	dupe_map(t_data *gameinfo)
 	}
 	copy_map(gameinfo, temp);
 }
-
-
 
 void	check_path(t_data *gameinfo)
 {

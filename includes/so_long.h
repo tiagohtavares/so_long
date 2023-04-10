@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 01:12:38 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:09:59 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct s_data
 	int		totalcollectables;
 }	t_data;
 
+void	find_position(t_data *gameinfo);
+void	check_empty(t_data *gameinfo);
+void	check_rectangle(t_data *gameinfo);
 void	flood_fill(t_data *gameinfo);
 void	check_path(t_data *gameinfo);
 int		exit_clean(t_data *gameinfo);
@@ -55,5 +58,7 @@ void	load_images(t_data *gameinfo);
 void	moves(int key, t_data *gameinfo);
 void	error(int type, t_data *gameinfo);
 void	read_map(char *filepath, t_data *gameinfo);
+void	update_position(t_data *gameinfo, char type);
+int		move_isvalid(t_data *gameinfo, char type);
 
 #endif

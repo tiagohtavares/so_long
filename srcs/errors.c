@@ -6,12 +6,11 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:22:30 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/09 09:28:54 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:14:41 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 int	exit_clean(t_data *gameinfo)
 {

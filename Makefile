@@ -6,7 +6,7 @@
 #    By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/01 19:49:40 by ttavares          #+#    #+#              #
-#    Updated: 2023/04/10 01:00:43 by ttavares         ###   ########.fr        #
+#    Updated: 2023/04/10 19:58:34 by ttavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM	= rm -f
 SRCSOLONG =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
 			./srcs/main.c ./srcs/readmap.c ./srcs/errors.c ./srcs/check_map.c\
 			./srcs/readmap_utils.c ./srcs/moves.c ./srcs/drawmap.c ./srcs/check_path.c \
-			./srcs/flood_fill.c
+			./srcs/flood_fill.c ./srcs/check_map_extra.c ./srcs/moves_extra.c ./srcs/moves_validation.c
 
 NAME = so_long
 
