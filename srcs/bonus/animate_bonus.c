@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:43:48 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 16:18:30 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 23:16:37 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	move_enemy_side(t_data *gameinfo, int x, int y, clock_t now)
 		gameinfo->map[y][x] = gameinfo->map[y][x + 1];
 		gameinfo->map[y][x + 1] = swap;
 	}
-	drawmap(gameinfo);
 }
 
 void	move_enemy_top(t_data *gameinfo, int x, int y, clock_t now)
@@ -107,7 +106,6 @@ void	move_enemy_top(t_data *gameinfo, int x, int y, clock_t now)
 		gameinfo->map[y][x] = gameinfo->map[y - 1][x];
 		gameinfo->map[y - 1][x] = swap;
 	}
-	drawmap(gameinfo);
 }
 
 int	animate(t_data *gameinfo)
@@ -117,16 +115,8 @@ int	animate(t_data *gameinfo)
 
 	x = find_positionx(gameinfo);
 	y = find_positiony(gameinfo);
-	while (gameinfo->frame < 20000000)
-		gameinfo->frame++;
-	if (gameinfo->totalframe % 10 == 0)
-		mlx_put_image_to_window(gameinfo->mlx, gameinfo->mlx_window,
-			gameinfo->img_enemy1, x * 64, y * 64);
-	if (gameinfo->totalframe % 25 == 0)
-		mlx_put_image_to_window(gameinfo->mlx, gameinfo->mlx_window,
-			gameinfo->img_enemy2, x * 64, y * 64);
-	gameinfo->frame = 0;
-	gameinfo->totalframe++;
+	animate_one(gameinfo);
+	animate_two(gameinfo);
 	if (gameinfo->totalframe % 30 == 0)
 	{
 		if (rand() % 2 == 0)
@@ -134,5 +124,6 @@ int	animate(t_data *gameinfo)
 		if (rand() % 3 == 0)
 			move_enemy_top(gameinfo, x, y, rand());
 	}
+	gameinfo->frame = 0;
 	return (0);
 }

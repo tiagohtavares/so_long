@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:57:18 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:26:00 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:57:01 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	load_enemy(t_data *gameinfo)
 {
 	gameinfo->img_enemy1 = mlx_xpm_file_to_image
 		(gameinfo->mlx, "assets/sprites/slime1.xpm",
-			gameinfo->imagex, gameinfo->imagey);
-	gameinfo->img_enemy2 = mlx_xpm_file_to_image
-		(gameinfo->mlx, "assets/sprites/slime2.xpm",
 			gameinfo->imagex, gameinfo->imagey);
 }
 
@@ -32,7 +29,7 @@ void	load_images(t_data *gameinfo)
 	gameinfo->imagex = &x;
 	gameinfo->imagey = &y;
 	gameinfo->img_player = mlx_xpm_file_to_image
-		(gameinfo->mlx, "assets/sprites/Player.xpm",
+		(gameinfo->mlx, "assets/sprites/player1.xpm",
 			gameinfo->imagex, gameinfo->imagey);
 	gameinfo->img_wall = mlx_xpm_file_to_image
 		(gameinfo->mlx, "assets/sprites/wall.xpm",

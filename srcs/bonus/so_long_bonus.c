@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:55:28 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 16:21:34 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 20:26:37 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	start_mlx(t_data *gameinfo)
 	load_images(gameinfo);
 	load_enemy(gameinfo);
 	drawmap(gameinfo);
-	mlx_loop_hook(gameinfo->mlx, animate, gameinfo);
+	mlx_loop_hook(gameinfo->mlx, drawmap, gameinfo);
 	mlx_hook(gameinfo->mlx_window, 17, (1L << 0), x_button, gameinfo);
 	mlx_key_hook(gameinfo->mlx_window, &keys, gameinfo);
 	mlx_loop(gameinfo->mlx);

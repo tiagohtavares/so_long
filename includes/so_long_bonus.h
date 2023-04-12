@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 16:10:06 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 23:17:10 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_data
 	int		totalframe;
 }	t_data;
 
+int		animate_one(t_data *gameinfo);
+int		animate_two(t_data *gameinfo);
 void	clear_exit(t_data *gameinfo);
 void	dupe_map(t_data *gameinfo);
 void	find_position_duped(t_data *gameinfo);
@@ -62,7 +64,7 @@ void	check_rectangle(t_data *gameinfo);
 void	flood_fill(t_data *gameinfo);
 void	check_path(t_data *gameinfo);
 int		exit_clean(t_data *gameinfo);
-void	drawmap(t_data *gameinfo);
+int		drawmap(t_data *gameinfo);
 void	printmap(t_data *gameinfo);
 void	clearmap(t_data *gameinfo);
 void	check_map(t_data *gameinfo);

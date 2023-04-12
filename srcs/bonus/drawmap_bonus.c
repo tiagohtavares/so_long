@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 22:01:27 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:24:51 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 20:38:36 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,27 @@ void	drawmap_enemy(t_data *gameinfo, int y, int x)
 	free(temp);
 }
 
-void	drawmap(t_data *gameinfo)
+int	drawmap(t_data *gameinfo)
 {
 	int	x;
 	int	y;
 
-	y = 0;
-	while (gameinfo->map[y])
+	gameinfo->totalframe++;
+	if (gameinfo->totalframe % 60)
 	{
-		x = 0;
-		while (gameinfo->map[y][x])
+		y = 0;
+		while (gameinfo->map[y])
 		{
-			drawmap_extra(gameinfo, y, x);
-			drawmap_enemy(gameinfo, y, x);
-			x++;
+			x = 0;
+			while (gameinfo->map[y][x])
+			{
+				drawmap_extra(gameinfo, y, x);
+				drawmap_enemy(gameinfo, y, x);
+				x++;
+			}
+			y++;
 		}
-		y++;
 	}
+	animate(gameinfo);
+	return (0);
 }
