@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:05:12 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:10:06 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,14 @@ typedef struct s_data
 	int		emptyline;
 	int		totalcollectables;
 	int		totalenemy;
+	int		frame;
+	int		totalframe;
 }	t_data;
 
+void	clear_exit(t_data *gameinfo);
+void	dupe_map(t_data *gameinfo);
+void	find_position_duped(t_data *gameinfo);
+void	clear_duped(t_data *gameinfo);
 int		animate(t_data *gameinfo);
 void	load_enemy(t_data *gameinfo);
 void	total_enemy(t_data *gameinfo);

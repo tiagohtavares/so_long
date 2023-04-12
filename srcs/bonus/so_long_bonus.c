@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:55:28 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:25:00 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:21:34 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	x_button(t_data *gameinfo)
 void	start_mlx(t_data *gameinfo)
 {
 	gameinfo->collected = 0;
+	gameinfo->frame = 0;
+	gameinfo->totalframe = 0;
 	gameinfo->mlx = mlx_init();
 	gameinfo->mlx_window = mlx_new_window(gameinfo->mlx, gameinfo->windowx * 64,
 			gameinfo->windowy * 64, "so_long");

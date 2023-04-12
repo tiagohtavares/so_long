@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 20:09:59 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:10:01 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_data
 	int		totalcollectables;
 }	t_data;
 
+void	find_position_duped(t_data *gameinfo);
+void	clear_duped(t_data *gameinfo);
 void	find_position(t_data *gameinfo);
 void	check_empty(t_data *gameinfo);
 void	check_rectangle(t_data *gameinfo);

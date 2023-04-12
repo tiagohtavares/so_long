@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:43:48 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:22:52 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:18:30 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,26 +114,25 @@ int	animate(t_data *gameinfo)
 {
 	int			x;
 	int			y;
-	long		pause;
-	clock_t		now;
-	clock_t		then;
 
-	pause = 80000;
-	then = clock();
-	now = clock();
 	x = find_positionx(gameinfo);
 	y = find_positiony(gameinfo);
-	while ((now - then) < pause)
-		now = clock ();
-	if (now % 3 == 0)
+	while (gameinfo->frame < 20000000)
+		gameinfo->frame++;
+	if (gameinfo->totalframe % 10 == 0)
 		mlx_put_image_to_window(gameinfo->mlx, gameinfo->mlx_window,
 			gameinfo->img_enemy1, x * 64, y * 64);
-	if (now % 5 == 0)
+	if (gameinfo->totalframe % 25 == 0)
 		mlx_put_image_to_window(gameinfo->mlx, gameinfo->mlx_window,
 			gameinfo->img_enemy2, x * 64, y * 64);
-	if (then % 22 == 0)
-		move_enemy_side(gameinfo, x, y, now);
-	if (then % 23 == 0)
-		move_enemy_top(gameinfo, x, y, now);
+	gameinfo->frame = 0;
+	gameinfo->totalframe++;
+	if (gameinfo->totalframe % 30 == 0)
+	{
+		if (rand() % 2 == 0)
+			move_enemy_side(gameinfo, x, y, rand());
+		if (rand() % 3 == 0)
+			move_enemy_top(gameinfo, x, y, rand());
+	}
 	return (0);
 }

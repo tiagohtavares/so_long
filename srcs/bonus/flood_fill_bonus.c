@@ -6,53 +6,48 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:00:08 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 11:46:48 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:15:53 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long_bonus.h"
 
-void	find_position_duped(t_data *gameinfo)
+void	fill_e(t_data *gameinfo, int x, int y)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	while (gameinfo->duped_map[y])
-	{
-		x = 0;
-		while (gameinfo->duped_map[y][x])
-		{
-			if (gameinfo->duped_map[y][x] == 'P')
-			{
-				gameinfo->duped_positionx = x;
-				gameinfo->duped_positiony = y;
-			}
-			x++;
-		}
-		y++;
-	}
+	gameinfo->duped_map[y][x] = 'X';
+	if (gameinfo->duped_map[y + 1][x] == '0' ||
+		gameinfo->duped_map[y + 1][x] == 'C')
+		fill_e(gameinfo, x, y + 1);
+	if (gameinfo->duped_map[y - 1][x] == '0' ||
+		gameinfo->duped_map[y - 1][x] == 'C')
+		fill_e(gameinfo, x, y - 1);
+	if (gameinfo->duped_map[y][x + 1] == '0' ||
+		gameinfo->duped_map[y][x + 1] == 'C')
+		fill_e(gameinfo, x + 1, y);
+	if (gameinfo->duped_map[y][x - 1] == '0' ||
+		gameinfo->duped_map[y][x - 1] == 'C')
+		fill_e(gameinfo, x - 1, y);
 }
 
-void	fill(t_data *gameinfo, int x, int y)
+void	fill_c(t_data *gameinfo, int x, int y)
 {
 	gameinfo->duped_map[y][x] = 'X';
 	if (gameinfo->duped_map[y + 1][x] == '0' ||
 		gameinfo->duped_map[y + 1][x] == 'C' ||
 		gameinfo->duped_map[y + 1][x] == 'E')
-		fill(gameinfo, x, y + 1);
+		fill_c(gameinfo, x, y + 1);
 	if (gameinfo->duped_map[y - 1][x] == '0' ||
 		gameinfo->duped_map[y - 1][x] == 'C' ||
-		gameinfo->duped_map[y + 1][x] == 'E')
-		fill(gameinfo, x, y - 1);
+		gameinfo->duped_map[y - 1][x] == 'E')
+		fill_c(gameinfo, x, y - 1);
 	if (gameinfo->duped_map[y][x + 1] == '0' ||
 		gameinfo->duped_map[y][x + 1] == 'C' ||
 		gameinfo->duped_map[y][x + 1] == 'E')
-		fill(gameinfo, x + 1, y);
+		fill_c(gameinfo, x + 1, y);
 	if (gameinfo->duped_map[y][x - 1] == '0' ||
 		gameinfo->duped_map[y][x - 1] == 'C' ||
 		gameinfo->duped_map[y][x - 1] == 'E')
-		fill(gameinfo, x - 1, y);
+		fill_c(gameinfo, x - 1, y);
 }
 
 void	check_coins_left(t_data *gameinfo)
@@ -62,9 +57,9 @@ void	check_coins_left(t_data *gameinfo)
 	int	c;
 	int	e;
 
+	e = 0;
 	y = 0;
 	c = 0;
-	e = 0;
 	while (gameinfo->duped_map[y])
 	{
 		x = 0;
@@ -78,8 +73,31 @@ void	check_coins_left(t_data *gameinfo)
 		}
 		y++;
 	}
-	if (c > 0 || e > 0)
-		error(2, gameinfo);
+	if (c > 0 || e == 1)
+		clear_exit(gameinfo);
+}
+
+void	check_exit(t_data *gameinfo)
+{
+	int	x;
+	int	y;
+	int	c;
+
+	y = 0;
+	c = 0;
+	while (gameinfo->duped_map[y])
+	{
+		x = 0;
+		while (gameinfo->duped_map[y][x])
+		{
+			if (gameinfo->duped_map[y][x] == 'E')
+				c++;
+			x++;
+		}
+		y++;
+	}
+	if (c != 1)
+		clear_exit(gameinfo);
 }
 
 void	flood_fill(t_data *gameinfo)
@@ -92,6 +110,13 @@ void	flood_fill(t_data *gameinfo)
 	find_position_duped(gameinfo);
 	x = gameinfo->duped_positionx;
 	y = gameinfo->duped_positiony;
-	fill(gameinfo, x, y);
+	fill_e(gameinfo, x, y);
+	check_exit(gameinfo);
+	clear_duped(gameinfo);
+	dupe_map(gameinfo);
+	find_position_duped(gameinfo);
+	x = gameinfo->duped_positionx;
+	y = gameinfo->duped_positiony;
+	fill_c(gameinfo, x, y);
 	check_coins_left(gameinfo);
 }
