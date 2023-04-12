@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:00:08 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 01:35:51 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:46:32 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ void	fill(t_data *gameinfo, int x, int y)
 		fill(gameinfo, x, y - 1);
 	if (gameinfo->duped_map[y][x + 1] == '0' ||
 		gameinfo->duped_map[y][x + 1] == 'C' ||
-		gameinfo->duped_map[y + 1][x] == 'E')
+		gameinfo->duped_map[y][x + 1] == 'E')
 		fill(gameinfo, x + 1, y);
 	if (gameinfo->duped_map[y][x - 1] == '0' ||
 		gameinfo->duped_map[y][x - 1] == 'C' ||
-		gameinfo->duped_map[y + 1][x] == 'E')
+		gameinfo->duped_map[y][x - 1] == 'E')
 		fill(gameinfo, x - 1, y);
+	printmap(gameinfo);
 }
 
 void	check_coins_left(t_data *gameinfo)

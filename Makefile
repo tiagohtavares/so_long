@@ -43,7 +43,7 @@ $(MINILIBX):
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(LIBFT) $(MINILIBX)
-	$(CC) $(SRCSOLONG) $(MINILIBX) -lXext -lX11 $(LIBFT) -o $(NAME)
+	$(CC) -g $(SRCSOLONG) $(MINILIBX) -lXext -lX11 $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):
 	$(CC) -g $(SRCSOLONG_BONUS) $(MINILIBX) -lXext -lX11 $(LIBFT) -o $(NAME_BONUS)
