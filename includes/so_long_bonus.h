@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:53:43 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 23:17:10 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:48:58 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_data
 	void	*mlx_window;
 	void	*img_enemy1;
 	void	*img_enemy2;
+	void	*img_bomb;
+	void	*img_fire;
 	char	**map;
 	char	**duped_map;
 	int		*imagex;
@@ -44,10 +46,27 @@ typedef struct s_data
 	int		emptyline;
 	int		totalcollectables;
 	int		totalenemy;
-	int		frame;
 	int		totalframe;
+	int		frame;
+	int		bomb_on;
+	int		bombx;
+	int		enemy_alive;
+	int		bomby;
 }	t_data;
 
+void	clear_fire(t_data *gameinfo);
+void	move_enemy_side(t_data *gameinfo, int x, int y, int now);
+void	move_enemy_top(t_data *gameinfo, int x, int y, int now);
+void	destroy_enemy(t_data *gameinfo, int x, int y, int type);
+void	explode(t_data *gameinfo);
+int		animate_two(t_data *gameinfo);
+int		animate_one(t_data *gameinfo);
+void	animate_enemy(t_data *gameinfo, int x, int y);
+void	delay(t_data *gameinfo);
+void	animate_bomb(t_data *gameinfo);
+int		find_positionx(t_data *gameinfo);
+int		find_positiony(t_data *gameinfo);
+int		bomb(t_data *gameinfo);
 int		animate_one(t_data *gameinfo);
 int		animate_two(t_data *gameinfo);
 void	clear_exit(t_data *gameinfo);

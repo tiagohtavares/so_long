@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 17:28:01 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 20:26:12 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:59:58 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	moves(int key, t_data *gameinfo)
 		move_a(gameinfo);
 	else if (key == XK_d)
 		move_d(gameinfo);
+	else if (key == XK_space && gameinfo->bomb_on == 0)
+		bomb(gameinfo);
 }

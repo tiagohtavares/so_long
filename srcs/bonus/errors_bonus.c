@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:22:30 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 20:17:41 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:18:11 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	exit_clean(t_data *gameinfo)
 	mlx_destroy_image(gameinfo->mlx, gameinfo->img_player);
 	mlx_destroy_image(gameinfo->mlx, gameinfo->img_wall);
 	mlx_destroy_image(gameinfo->mlx, gameinfo->img_enemy1);
+	mlx_destroy_image(gameinfo->mlx, gameinfo->img_bomb);
+	mlx_destroy_image(gameinfo->mlx, gameinfo->img_fire);
 	mlx_destroy_window(gameinfo->mlx, gameinfo->mlx_window);
 	mlx_destroy_display(gameinfo->mlx);
 	free(gameinfo->mlx);

@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 23:45:24 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 21:24:25 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:07:50 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,5 @@ void	dupe_map(t_data *gameinfo)
 
 void	check_path(t_data *gameinfo)
 {
-	dupe_map(gameinfo);
 	flood_fill(gameinfo);
-	clear_duped(gameinfo);
 }

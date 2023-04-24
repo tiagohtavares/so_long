@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:43:48 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 23:16:37 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/20 15:42:49 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,13 @@ int	find_positionx(t_data *gameinfo)
 	return (0);
 }
 
-void	move_enemy_side(t_data *gameinfo, int x, int y, clock_t now)
+void	move_enemy_side(t_data *gameinfo, int x, int y, int now)
 {
 	char	swap;
 
 	if (gameinfo->map[y][x - 1] == 'P')
 		error(1, gameinfo);
-	if (gameinfo->map[y][x - 1] != '1' &&
-		gameinfo->map[y][x - 1] != 'E' &&
-		gameinfo->map[y][x - 1] != 'C' && (now % 2 == 0))
+	if (gameinfo->map[y][x - 1] == '0' && (now % 2 == 0))
 	{
 		swap = gameinfo->map[y][x];
 		gameinfo->map[y][x] = gameinfo->map[y][x - 1];
@@ -69,10 +67,7 @@ void	move_enemy_side(t_data *gameinfo, int x, int y, clock_t now)
 	}
 	if (gameinfo->map[y][x + 1] == 'P')
 		error(1, gameinfo);
-	if (gameinfo->map[y][x + 1] != '1' &&
-		gameinfo->map[y][x + 1] != 'P' &&
-		gameinfo->map[y][x + 1] != 'E' &&
-		gameinfo->map[y][x + 1] != 'C' && (now % 3 == 0))
+	if (gameinfo->map[y][x + 1] == '0' && (now % 3 == 0))
 	{
 		swap = gameinfo->map[y][x];
 		gameinfo->map[y][x] = gameinfo->map[y][x + 1];
@@ -80,16 +75,13 @@ void	move_enemy_side(t_data *gameinfo, int x, int y, clock_t now)
 	}
 }
 
-void	move_enemy_top(t_data *gameinfo, int x, int y, clock_t now)
+void	move_enemy_top(t_data *gameinfo, int x, int y, int now)
 {
 	char	swap;
 
 	if (gameinfo->map[y + 1][x] == 'P')
 		error(1, gameinfo);
-	if (gameinfo->map[y + 1][x] != '1' &&
-		gameinfo->map[y + 1][x] != 'P' &&
-		gameinfo->map[y + 1][x] != 'E' &&
-		gameinfo->map[y + 1][x] != 'C' && (now % 2 == 0))
+	if (gameinfo->map[y + 1][x] == '0' && (now % 2 == 0))
 	{
 		swap = gameinfo->map[y][x];
 		gameinfo->map[y][x] = gameinfo->map[y + 1][x];
@@ -97,10 +89,7 @@ void	move_enemy_top(t_data *gameinfo, int x, int y, clock_t now)
 	}
 	if (gameinfo->map[y - 1][x] == 'P')
 		error(1, gameinfo);
-	if (gameinfo->map[y - 1][x] != '1' &&
-		gameinfo->map[y - 1][x] != 'P' &&
-		gameinfo->map[y - 1][x] != 'E' &&
-		gameinfo->map[y - 1][x] != 'C' && (now % 3 == 0))
+	if (gameinfo->map[y - 1][x] == '0' && (now % 3 == 0))
 	{
 		swap = gameinfo->map[y][x];
 		gameinfo->map[y][x] = gameinfo->map[y - 1][x];
@@ -110,20 +99,27 @@ void	move_enemy_top(t_data *gameinfo, int x, int y, clock_t now)
 
 int	animate(t_data *gameinfo)
 {
-	int			x;
-	int			y;
+	int	y;
+	int	x;
 
-	x = find_positionx(gameinfo);
-	y = find_positiony(gameinfo);
+	delay(gameinfo);
+	y = 0;
+	while (gameinfo->map[y])
+	{
+		x = 0;
+		while (gameinfo->map[y][x])
+		{
+			if (gameinfo->map[y][x] == 'Z')
+				animate_enemy(gameinfo, x, y);
+			x++;
+		}
+		y++;
+	}
 	animate_one(gameinfo);
 	animate_two(gameinfo);
-	if (gameinfo->totalframe % 30 == 0)
-	{
-		if (rand() % 2 == 0)
-			move_enemy_side(gameinfo, x, y, rand());
-		if (rand() % 3 == 0)
-			move_enemy_top(gameinfo, x, y, rand());
-	}
-	gameinfo->frame = 0;
+	if (gameinfo->totalframe % 25 == 0)
+		clear_fire(gameinfo);
+	if (gameinfo->bomb_on == 1)
+		animate_bomb(gameinfo);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:44:52 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/11 00:09:47 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:31:15 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	check_enemy(t_data *gameinfo)
 		}
 		y++;
 	}
-	if (enemy != 1)
+	if (enemy < 1)
 		error(2, gameinfo);
 }

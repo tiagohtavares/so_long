@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:57:50 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/10 23:19:48 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/20 15:44:02 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,21 @@ int	move_isvalid(t_data *gameinfo, char type)
 	x = gameinfo->positionx;
 	y = gameinfo->positiony;
 	r = 0;
-	if (type == 'w' && gameinfo->map[y - 1][x] != '1')
+	if (type == 'w' && gameinfo->map[y - 1][x] != '1'
+		&& gameinfo->map[y - 1][x] != 'F'
+			&& gameinfo->map[y - 1][x] != 'B')
 		r = moves_w(gameinfo, x, y);
-	else if (type == 's' && gameinfo->map[y + 1][x] != '1')
+	else if (type == 's' && gameinfo->map[y + 1][x] != '1'
+		&& gameinfo->map[y + 1][x] != 'F'
+			&& gameinfo->map[y + 1][x] != 'B')
 		r = moves_s(gameinfo, x, y);
-	else if (type == 'a' && gameinfo->map[y][x - 1] != '1')
+	else if (type == 'a' && gameinfo->map[y][x - 1] != '1'
+		&& gameinfo->map[y][x - 1] != 'F'
+			&& gameinfo->map[y][x - 1] != 'B')
 		r = moves_a(gameinfo, x, y);
-	else if (type == 'd' && gameinfo->map[y][x + 1] != '1')
+	else if (type == 'd' && gameinfo->map[y][x + 1] != '1'
+		&& gameinfo->map[y][x + 1] != 'F'
+			&& gameinfo->map[y][x + 1] != 'B')
 		r = moves_d(gameinfo, x, y);
 	return (r);
 }

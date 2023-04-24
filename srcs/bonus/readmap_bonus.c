@@ -6,7 +6,7 @@
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:57:18 by ttavares          #+#    #+#             */
-/*   Updated: 2023/04/12 22:57:01 by ttavares         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:48:19 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@ void	load_enemy(t_data *gameinfo)
 {
 	gameinfo->img_enemy1 = mlx_xpm_file_to_image
 		(gameinfo->mlx, "assets/sprites/slime1.xpm",
+			gameinfo->imagex, gameinfo->imagey);
+}
+
+void	load_images_extra(t_data *gameinfo)
+{
+	int	x;
+	int	y;
+
+	y = 64;
+	x = 64;
+	gameinfo->imagex = &x;
+	gameinfo->imagey = &y;
+	gameinfo->img_bomb = mlx_xpm_file_to_image
+		(gameinfo->mlx, "assets/sprites/bomb.xpm",
+			gameinfo->imagex, gameinfo->imagey);
+	gameinfo->img_fire = mlx_xpm_file_to_image
+		(gameinfo->mlx, "assets/sprites/flame.xpm",
+			gameinfo->imagex, gameinfo->imagey);
+	gameinfo->img_floor = mlx_xpm_file_to_image
+		(gameinfo->mlx, "assets/sprites/floor.xpm",
 			gameinfo->imagex, gameinfo->imagey);
 }
 
@@ -40,9 +60,7 @@ void	load_images(t_data *gameinfo)
 	gameinfo->img_exit = mlx_xpm_file_to_image
 		(gameinfo->mlx, "assets/sprites/exit.xpm",
 			gameinfo->imagex, gameinfo->imagey);
-	gameinfo->img_floor = mlx_xpm_file_to_image
-		(gameinfo->mlx, "assets/sprites/floor.xpm",
-			gameinfo->imagex, gameinfo->imagey);
+	load_images_extra(gameinfo);
 }
 
 void	check_empty_line(char *line, t_data *gameinfo)
@@ -53,9 +71,20 @@ void	check_empty_line(char *line, t_data *gameinfo)
 	gameinfo->emptyline = 0;
 	while (line[i])
 	{
+		if (line[0] == '\n')
+			gameinfo->emptyline = 1;
 		if (line[i] == '\n' && line[i + 1] == '\n')
 			gameinfo->emptyline = 1;
 		i++;
+	}
+	i = 0;
+	while (line[i])
+		i++;
+	if (i == 0)
+	{
+		free(line);
+		error(0, gameinfo);
+		exit(1);
 	}
 }
 

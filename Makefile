@@ -6,7 +6,7 @@
 #    By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/01 19:49:40 by ttavares          #+#    #+#              #
-#    Updated: 2023/04/12 23:15:15 by ttavares         ###   ########.fr        #
+#    Updated: 2023/04/24 12:27:51 by ttavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCSOLONG_BONUS =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_
 					./srcs/bonus/so_long_bonus.c ./srcs/bonus/readmap_bonus.c ./srcs/bonus/errors_bonus.c ./srcs/bonus/check_map_bonus.c\
 					./srcs/bonus/readmap_utils_bonus.c ./srcs/bonus/moves_bonus.c ./srcs/bonus/drawmap_bonus.c ./srcs/bonus/check_path_bonus.c \
 					./srcs/bonus/flood_fill_bonus.c ./srcs/bonus/check_map_extra_bonus.c ./srcs/bonus/moves_extra_bonus.c ./srcs/bonus/moves_validation_bonus.c \
-					./srcs/bonus/animate_bonus.c ./srcs/bonus/flood_fill_extra_bonus.c ./srcs/bonus/animate_bonus_extra.c
+					./srcs/bonus/animate_bonus.c ./srcs/bonus/flood_fill_extra_bonus.c ./srcs/bonus/animate_bonus_extra.c ./srcs/bonus/bomb.c ./srcs/bonus/bomb_extra.c
 
 NAME = so_long
 
@@ -59,3 +59,5 @@ fclean:	clean
 	make fclean -C $(LIBFT_DIR)
 
 re:	fclean all bonus
+
+.SILENT:
