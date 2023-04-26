@@ -2,6 +2,8 @@
 	so_long
 </h1>
 
+![alt text](https://raw.githubusercontent.com/tiagohtavares/so_long/master/assets/sprites/readme.png?token=GHSAT0AAAAAAB7REERGDDTP4VPCGMBXOMMYZCI72HA)
+
 ## About 
 
 This project consists of creating a simple 2D game using minilibx. MiniLibX is a tiny graphics library which allows you to do things for rendering something on the screen.
